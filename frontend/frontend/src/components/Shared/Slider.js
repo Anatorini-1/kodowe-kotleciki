@@ -60,22 +60,23 @@ function Slider({ category }) {
       });
   }, []);
   useEffect(() => {
-    console.log(slides.length);
     let newSlides = [];
     for (let i = 0; i < slides.length; i++) {
-      if (slides[i]["category"] !== category) continue;
-      newSlides.push(
-        <div className="slide" id={`slide${i}`} key={i}>
-          <div className="content">
-            <h2>{slides[i]["name"]}</h2>
-            <p>{slides[i]["description"]}</p>
+      if (slides[i]["category"] == category) {
+        newSlides.push(
+          <div className="slide" id={`slide${i}`} key={i}>
+            <div className="content">
+              <h2>{slides[i]["name"]}</h2>
+              <p>{slides[i]["description"]}</p>
+            </div>
+            <button className="choose">Choose</button>
           </div>
-          <button className="choose">Choose</button>
-        </div>
-      );
+        );
+      }
     }
+    console.log(newSlides.length);
     setSlidesToRender(newSlides);
-  }, [slides]);
+  }, [slides, category]);
 
   return (
     <>

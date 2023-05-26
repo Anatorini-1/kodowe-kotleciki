@@ -1,0 +1,30 @@
+.categories-container{
+    width: 80%;
+    margin: 50px auto;
+    position: relative;
+}
+.all-categories{
+    width: 80%;
+    font-size: 30px;
+    font-weight: bold;
+    height: 50px;
+}
+.categories{
+    position: relative;
+    font-size: 20px;
+    padding: 10px;
+    width: 180px;
+    height: 40px;
+    float: left;
+    padding-bottom: 20px;
+}
+select{
+    position: relative;
+    width: 250px;
+    height: 40px;
+    float: left;
+    background-color: #6960e6;
+    color: white;
+    letter-spacing: 2px;
+    padding-left: 15px;
+}

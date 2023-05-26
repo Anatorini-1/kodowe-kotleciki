@@ -29,6 +29,9 @@ function App() {
       case "register":
         setToShow(<Register user={user} setUser={setUser} setView={setView} />);
         break;
+      case "account":
+        setToShow(<Register user={user} setUser={setUser} setView={setView} />);
+        break;
     }
   }, [view]);
   useEffect(() => {
