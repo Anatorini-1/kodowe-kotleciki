@@ -15,9 +15,9 @@ function Login({ user, setUser }) {
   };
 
   return (
-    <>
+    <div className="loginContainer">
       <div className="loginForm">
-        <h2 className="loginTitle">Sign In</h2>
+        <h2 className="loginTitle">SIGN IN</h2>
         <form onSubmit={login}>
           <div className="inputFormElement">
             <input
@@ -47,7 +47,7 @@ function Login({ user, setUser }) {
           </span>
         </form>
       </div>
-    </>
+    </div>
   );
 }
 

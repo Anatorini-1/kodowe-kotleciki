@@ -8,7 +8,7 @@ function Register() {
   return (
     <>
       <div className="loginForm">
-        <h2 className="loginTitle">Sign Un</h2>
+        <h2 className="loginTitle">SIGN UP</h2>
         <form onSubmit={register}>
           <div className="inputFormElement">
             <input

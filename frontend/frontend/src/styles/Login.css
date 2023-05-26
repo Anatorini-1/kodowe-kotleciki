@@ -1,20 +1,28 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-.loginForm{
+
+.loginContainer {
     display: flex;
-    flex-direction: column;    
+    justify-content: center;
+    align-items: center;
+    height: 86vh;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
     width: 400px;
 }
 
-.loginTitle{
+.loginTitle {
     text-align: center;
     width: 400px;
 }
 
 
-.inputText{
+.inputText {
     background-color: 0 0;
     height: 50px;
     outline: none;
@@ -24,7 +32,7 @@
     margin-bottom: 15px;
 }
 
-.loginButton{
+.loginButton {
     width: 400px;
     height: 50px;
     background: #6960e6;
@@ -33,11 +41,11 @@
     border-radius: 7px;
 }
 
-.loginButton:hover{
+.loginButton:hover {
     background-color: #393299;
 }
 
-.loginLink{
+.loginLink {
     text-align: center;
     width: 400px;
 }
