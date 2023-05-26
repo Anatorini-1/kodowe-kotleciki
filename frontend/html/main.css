@@ -1,0 +1,41 @@
+body, ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    background-color: #6960e6;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  
+  /* Logo styles */
+  .logo {
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+  }
+  
+  /* Right options list styles */
+  .right-options ul {
+    list-style-type: none;
+    display: flex;
+  }
+  
+  /* Login and Certificates list item styles */
+  .right-options li {
+    margin-left: 20px;
+  }
+  
+  /* Login and Certificates link styles */
+  .right-options a {
+    font-size: 16px;
+    text-decoration: none;
+    color:white;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }

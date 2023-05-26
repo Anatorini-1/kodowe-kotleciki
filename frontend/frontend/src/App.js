@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from "./logo.svg";
+import "./App.css";
+import Welcome from "./components/Welcome";
+import KidsDash from "./components/Kids/Dashboard";
+import AdultDash from "./components/Adults/Dashboard";
+import { useState, createContext, useEffect } from "react";
+import Login from "./components/Shared/Login";
+import Nav from "./components/Shared/Nav";
 function App() {
+  const [user, setUser] = useState(null);
+  const [toShow, setToShow] = useState(null); // ["welcome","kidsDash","adultsDash","login"
+  const [view, setView] = useState("welcome");
+  useEffect(() => {
+    switch (view) {
+      case "welcome":
+        setToShow(<Welcome />);
+        break;
+      case "kidsDash":
+        setToShow(<KidsDash />);
+        break;
+      case "adultsDash":
+        setToShow(<AdultDash />);
+        break;
+      case "login":
+        setToShow(<Login user={user} setUser={setUser} />);
+    }
+  }, [view]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Nav user={user} setUser={setUser} setView={setView} />
+      {toShow}
+    </>
   );
 }
 
