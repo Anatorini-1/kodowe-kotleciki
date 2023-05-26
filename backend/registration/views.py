@@ -9,6 +9,12 @@ import datetime
 
 class RegisterView(APIView):
     def post(self, request):
+        print("before")
+        print(request.data)
+        request.data["access"] = int(request.data['access'])
+        request.data["age"] = int(request.data['age'])
+        print("after")
+        print(request.data)
         serializer = UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
@@ -42,24 +48,29 @@ class LoginView(APIView):
                             httponly=True)
 
         response.data = {
-            'jwt': token
+            'jwt': token,
+            'email': user.email,
+            'f_name': user.f_name,
+            'l_name': user.l_name,
+            'age': user.age,
+            'score': user.score,
+            'access': user.access
         }
         return response
 
 
 class UserView(APIView):
-
     def get(self, request):
         token = request.COOKIES.get('jwt')
         if not token:
             raise AuthenticationFailed('Unauthenticated!')
-
         try:
             payload = jwt.decode(token, 'secret', algorithms=['HS256'])
         except jwt.ExpiredSignatureError:
             raise AuthenticationFailed('Unauthenticated!')
 
         user = User.objects.filter(id=payload['id']).first()
+
         serializer = UserSerializer(user)
 
         return Response(serializer.data)
@@ -72,4 +83,12 @@ class LogutView(APIView):
         response.data = {
             'message': 'success'
         }
+
         return response
+
+
+class ListUsersView(APIView):
+    def get(self, request):
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)

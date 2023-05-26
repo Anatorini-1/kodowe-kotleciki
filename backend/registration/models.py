@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from courses.models import Courses
 
 
 class User(AbstractUser):
@@ -11,8 +12,10 @@ class User(AbstractUser):
     f_name = models.CharField(max_length=55)
     l_name = models.CharField(max_length=55)
     age = models.IntegerField()
-    score = models.IntegerField()
-    access = models.IntegerField()
+    score = models.IntegerField(default=0)
+    access = models.IntegerField(default=2)
+
+    finalised_courses = models.ManyToManyField(Courses, blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
