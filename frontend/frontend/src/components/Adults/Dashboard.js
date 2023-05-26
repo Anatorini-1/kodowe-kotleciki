@@ -1,7 +1,7 @@
 import React from "react";
-
-function Dashboard() {
-  return <div>Dashboard</div>;
+import Nav from "../Shared/Nav";
+function Dashboard({ user, setUser }) {
+  return <div>AdultDash</div>;
 }
 
 export default Dashboard;

@@ -1,7 +1,12 @@
 import React from "react";
-
-function ProfileDashboard() {
-  return <div>ProfileDashboard</div>;
+import Nav from "./Shared/Nav";
+function ProfileDashboard({ user, setUser }) {
+  return (
+    <div>
+      <Nav user={user} setUser={setUser} />
+      ProfileDashboard
+    </div>
+  );
 }
 
 export default ProfileDashboard;

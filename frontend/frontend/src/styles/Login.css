@@ -1,0 +1,43 @@
+*{
+    box-sizing: border-box;
+}
+
+.loginForm{
+    display: flex;
+    flex-direction: column;    
+    width: 400px;
+}
+
+.loginTitle{
+    text-align: center;
+    width: 400px;
+}
+
+
+.inputText{
+    background-color: 0 0;
+    height: 50px;
+    outline: none;
+    padding: 0 20px 0 20px;
+    width: 400px;
+    border-radius: 7px;
+    margin-bottom: 15px;
+}
+
+.loginButton{
+    width: 400px;
+    height: 50px;
+    background: #6960e6;
+    color: white;
+    border: none;
+    border-radius: 7px;
+}
+
+.loginButton:hover{
+    background-color: #393299;
+}
+
+.loginLink{
+    text-align: center;
+    width: 400px;
+}

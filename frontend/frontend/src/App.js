@@ -3,17 +3,35 @@ import "./App.css";
 import Welcome from "./components/Welcome";
 import KidsDash from "./components/Kids/Dashboard";
 import AdultDash from "./components/Adults/Dashboard";
-import { useState } from "react";
+import { useState, createContext, useEffect } from "react";
+import Login from "./components/Shared/Login";
+import Nav from "./components/Shared/Nav";
 function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
+  const [toShow, setToShow] = useState(null); // ["welcome","kidsDash","adultsDash","login"
   const [view, setView] = useState("welcome");
-  switch (view) {
-    case "welcome":
-      return <Welcome setView={setView} />;
-    case "kids":
-      return <KidsDash />;
-  }
-  return <Welcome setView={setView}></Welcome>;
+  useEffect(() => {
+    switch (view) {
+      case "welcome":
+        setToShow(<Welcome />);
+        break;
+      case "kidsDash":
+        setToShow(<KidsDash />);
+        break;
+      case "adultsDash":
+        setToShow(<AdultDash />);
+        break;
+      case "login":
+        setToShow(<Login user={user} setUser={setUser} />);
+    }
+  }, [view]);
+
+  return (
+    <>
+      <Nav user={user} setUser={setUser} setView={setView} />
+      {toShow}
+    </>
+  );
 }
 
 export default App;

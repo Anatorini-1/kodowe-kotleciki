@@ -1,10 +1,70 @@
-.showKidsDash{
-    width: 50%;
-    background-color: red;
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .grid-item
+  {
+    background-color: #ffffff;
     
-}
-
-.showAdultsDash{
-    width:50%;
-    background-color: green;
-}
+      text-align: center;
+      font-weight: bold;
+      min-height: 90vh;
+      color: white;
+      text-shadow: -2px 0 rgb(0, 0, 0), 0 2px rgb(0, 0, 0), 2px 0 rgb(0, 0, 0), 0 -2px rgb(0, 0, 0);
+      overflow: hidden;
+  }
+  .kids{
+    background-position: center; 
+    transition: transform .8s; /* Animation */
+    width: 100%;
+    height: 100%;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: auto;
+  }
+  .adults{
+    width: 100%;
+    height: 100%;
+    transition: transform .8s; /* Animation */
+    background-image: url('../../public/adults.jpg');
+    background-position: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: auto;
+  }
+  .grid-item h1
+  {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    letter-spacing: 10px;
+    font-size: 100px;
+  }
+  .grid-item:hover
+  {
+    overflow: hidden;
+    background-color: #b0c7f3;
+    text-align: center;
+    min-height: 90vh;
+    cursor: pointer;
+    color: #6960e6;
+    text-shadow: -2px 0 rgb(0, 0, 0), 0 2px rgb(0, 0, 0), 2px 0 rgb(0, 0, 0), 0 -2px rgb(0, 0, 0);
+  }
+  .kids:hover{
+    transform: scale(1.2);
+  }
+  .adults:hover
+  {
+    transform: scale(1.2);
+  }
+  @media screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+  }

@@ -1,24 +1,19 @@
 import React from "react";
+import Nav from "./Shared/Nav";
+
 import "../styles/Welcome.css";
 function Welcome({ setView }) {
-  console.log(setView);
   return (
-    <div>
-      <div
-        className="showKidsDash"
-        onClick={() => {
-          setView("kidsDash");
-        }}
-      >
-        Kids
+    <div className="grid-container">
+      <div className="grid-item">
+        <div className="kids">
+          <h1>Kids</h1>{" "}
+        </div>
       </div>
-      <div
-        className="showAdultsDash"
-        onClick={() => {
-          setView("adultsDash");
-        }}
-      >
-        Adults
+      <div className="grid-item">
+        <div className="adults">
+          <img src={require("../img/kids.jpg")} alt="123" />
+        </div>
       </div>
     </div>
   );
