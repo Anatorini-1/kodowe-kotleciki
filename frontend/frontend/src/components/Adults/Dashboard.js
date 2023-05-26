@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 function Dashboard({ user, setUser }) {
   const [category, setCategory] = useState("Essa");
   const [categories, setCategories] = useState([]);
+  const [courseToShow, setCourseToShow] = useState(null);
   useEffect(() => {}, [category]);
   useEffect(() => {
     fetch("http://192.168.134.36:8000/api/categoryList")

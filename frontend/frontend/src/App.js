@@ -8,6 +8,7 @@ import Login from "./components/Shared/Login";
 import Register from "./components/Shared/Register";
 import Nav from "./components/Shared/Nav";
 import Footer from "./components/Shared/Footer";
+import Account from "./components/Account/Account";
 function App() {
   const [user, setUser] = useState(null);
   const [toShow, setToShow] = useState(null); // ["welcome","kidsDash","adultsDash","login"
@@ -30,7 +31,7 @@ function App() {
         setToShow(<Register user={user} setUser={setUser} setView={setView} />);
         break;
       case "account":
-        setToShow(<Register user={user} setUser={setUser} setView={setView} />);
+        setToShow(<Account user={user} setUser={setUser} setView={setView} />);
         break;
     }
   }, [view]);

@@ -43,7 +43,12 @@ function Nav({ user, setUser, setView }) {
           ) : (
             <>
               <li>
-                <span>
+                <span
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setView("account");
+                  }}
+                >
                   Hi, {user.f_name} {user.l_name}
                 </span>
               </li>

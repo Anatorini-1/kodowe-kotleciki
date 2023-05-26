@@ -1,7 +1,8 @@
 .categories-container{
     width: 80%;
-    margin: 50px auto;
+    margin: 80px auto;
     position: relative;
+    margin-bottom: 260px;
 }
 .all-categories{
     width: 80%;
