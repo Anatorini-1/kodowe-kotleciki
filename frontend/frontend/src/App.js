@@ -13,13 +13,13 @@ function App() {
   useEffect(() => {
     switch (view) {
       case "welcome":
-        setToShow(<Welcome />);
+        setToShow(<Welcome view={view} setView={setView} />);
         break;
       case "kidsDash":
-        setToShow(<KidsDash />);
+        setToShow(<KidsDash view={view} setView={setView} />);
         break;
       case "adultsDash":
-        setToShow(<AdultDash />);
+        setToShow(<AdultDash view={view} setView={setView} />);
         break;
       case "login":
         setToShow(<Login user={user} setUser={setUser} />);

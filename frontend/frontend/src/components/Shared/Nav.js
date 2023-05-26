@@ -12,7 +12,15 @@ function Nav({ user, setUser, setView }) {
   };
   return (
     <nav className="navbar">
-      <div className="logo">EduSafety</div>
+      <div
+        className="logo"
+        onClick={(e) => {
+          e.preventDefault();
+          setView("welcome");
+        }}
+      >
+        EduSafety
+      </div>
       <div className="right-options">
         <ul>
           {user === null ? (
