@@ -2,17 +2,23 @@ import React, { useState } from "react";
 import "../../styles/Login.css";
 import axios from "axios";
 import Nav from "./Nav";
-function Login({ user, setUser }) {
+function Login({ user, setUser, setView }) {
   const [userName, setUserName] = useState("c@c.com");
   const [password, setPassword] = useState("b");
   const [message, setMessage] = useState(null);
   const login = async (e) => {
-    alert("Dzięki");
-    let res = await axios.post("http://192.168.134.36:8000/api/login", {
-      email: userName,
-      password: password,
-    });
-    console.log(res.data);
+    axios
+      .post("http://192.168.134.36:8000/api/login", {
+        email: userName,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response);
+        setUser(response.data);
+      })
+      .catch((error) => {
+        setMessage("Wrong login or password");
+      });
   };
 
   return (
@@ -55,7 +61,15 @@ function Login({ user, setUser }) {
           </button>
         </div>
         <span className="loginLink">
-          <a href="#">Don't have an account? Register now!</a>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              setView("register");
+            }}
+          >
+            Don't have an account? Register now!
+          </a>
         </span>
       </div>
     </div>

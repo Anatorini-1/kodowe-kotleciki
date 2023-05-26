@@ -10,6 +10,10 @@ function Nav({ user, setUser, setView }) {
     e.preventDefault();
     setUser(null);
   };
+  const register = (e) => {
+    e.preventDefault();
+    setView("register");
+  };
   return (
     <nav className="navbar">
       <div
@@ -30,12 +34,17 @@ function Nav({ user, setUser, setView }) {
                   Login
                 </a>
               </li>
+              <li>
+                <a href="#" onClick={register}>
+                  Register
+                </a>
+              </li>
             </>
           ) : (
             <>
               <li>
                 <span>
-                  Hi, {user.name} {user.surname}
+                  Hi, {user.f_name} {user.l_name}
                 </span>
               </li>
               <a href="#" onClick={logout}>

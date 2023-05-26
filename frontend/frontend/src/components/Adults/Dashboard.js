@@ -1,7 +1,13 @@
 import React from "react";
-import Nav from "../Shared/Nav";
+import Slider from "../Shared/Slider";
 function Dashboard({ user, setUser }) {
-  return <div>AdultDash</div>;
+  return (
+    <div>
+      <div>Wszystkie Kursy</div>
+      <div>Kategoria kursu</div>
+      <Slider category={"Essa"} />
+    </div>
+  );
 }
 
 export default Dashboard;
