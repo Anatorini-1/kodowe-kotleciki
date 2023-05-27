@@ -1,6 +1,6 @@
 import React from "react";
 
-function CourseContent() {
+function CourseContent({ courseData }) {
   return <div>CourseContent</div>;
 }
 

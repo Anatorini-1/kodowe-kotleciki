@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "../Shared/Slider";
 import "../../styles/adultDash.css";
 import { useState, useEffect } from "react";
+import Course from "./Course";
 function Dashboard({ user, setUser }) {
   const [category, setCategory] = useState("Essa");
   const [categories, setCategories] = useState([]);
@@ -20,6 +21,10 @@ function Dashboard({ user, setUser }) {
     setCategory(categories[0]);
   }, [categories]);
   let i = 0;
+  if (courseToShow !== null) {
+    return <Course courseData={courseToShow} />;
+  }
+
   return (
     <div className="categories-container">
       <div className="all-categories">Wszystkie Kursy</div>
@@ -37,7 +42,7 @@ function Dashboard({ user, setUser }) {
           </option>
         ))}
       </select>
-      <Slider category={category} />
+      <Slider category={category} setCourseToShow={setCourseToShow} />
     </div>
   );
 }

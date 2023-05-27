@@ -1,7 +1,7 @@
 import React from "react";
 import "../../styles/Slider.css";
 import { useEffect, useState } from "react";
-function Slider({ category }) {
+function Slider({ category, setCourseToShow }) {
   const [slides, setSlides] = useState([]);
   const [slidesToRender, setSlidesToRender] = useState([]);
   useEffect(() => {
@@ -69,7 +69,14 @@ function Slider({ category }) {
               <h2>{slides[i]["name"]}</h2>
               <p>{slides[i]["description"]}</p>
             </div>
-            <button className="choose">Choose</button>
+            <button
+              className="choose"
+              onClick={(e) => {
+                setCourseToShow(slides[i]);
+              }}
+            >
+              Choose
+            </button>
           </div>
         );
       }
