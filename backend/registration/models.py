@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from courses.models import Courses
+from courses.models import Courses, Certificate
 
 
 class User(AbstractUser):
@@ -16,6 +16,7 @@ class User(AbstractUser):
     access = models.IntegerField(default=2)
 
     finalised_courses = models.ManyToManyField(Courses, blank=True)
+    certificats = models.ManyToManyField(Certificate, blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
