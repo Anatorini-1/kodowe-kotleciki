@@ -54,14 +54,17 @@ class LoginView(APIView):
             'l_name': user.l_name,
             'age': user.age,
             'score': user.score,
-            'access': user.access
+            'access': user.access,
         }
         return response
 
 
 class UserView(APIView):
-    def get(self, request):
-        token = request.COOKIES.get('jwt')
+    def post(self, request):
+        print(request.data)
+        print(request.COOKIES)
+        print(request.COOKIES.get('jwt'))
+        token = request.data['jwt']
         if not token:
             raise AuthenticationFailed('Unauthenticated!')
         try:
