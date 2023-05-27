@@ -22,3 +22,14 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+
+class UserUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['score']
+
+    def update(self, instance, validated_data):
+        instance.score = validated_data.get('score', instance.score)
+        instance.save()
+        return instance
