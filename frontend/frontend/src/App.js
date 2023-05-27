@@ -10,6 +10,7 @@ import Nav from "./components/Shared/Nav";
 import Footer from "./components/Shared/Footer";
 import Account from "./components/Account/Account";
 import Course from "./components/Adults/Course";
+import AddCourse from "./components/Admin/AddCourse";
 function App() {
   const [user, setUser] = useState(null);
   const [toShow, setToShow] = useState(null); // ["welcome","kidsDash","adultsDash","login"
@@ -23,7 +24,7 @@ function App() {
         setToShow(<KidsDash view={view} setView={setView} />);
         break;
       case "adultsDash":
-        setToShow(<AdultDash view={view} setView={setView} />);
+        setToShow(<AdultDash view={view} setView={setView} user={user} />);
         break;
       case "login":
         setToShow(<Login user={user} setUser={setUser} setView={setView} />);
@@ -34,6 +35,10 @@ function App() {
       case "account":
         setToShow(<Account user={user} setUser={setUser} setView={setView} />);
         break;
+      case "admin":
+        setToShow(
+          <AddCourse user={user} setUser={setUser} setView={setView} />
+        );
     }
   }, [view]);
   useEffect(() => {
@@ -43,6 +48,8 @@ function App() {
       } else if (user.access === 3) {
         setView("kidsDash");
       }
+    } else {
+      setView("welcome");
     }
   }, [user]);
 

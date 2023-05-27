@@ -3,8 +3,9 @@ import "../../styles/Login.css";
 import axios from "axios";
 import Nav from "./Nav";
 function Login({ user, setUser, setView }) {
-  const [userName, setUserName] = useState("c@c.com");
-  const [password, setPassword] = useState("b");
+  axios.defaults.withCredentials = true;
+  const [userName, setUserName] = useState("e@e.com");
+  const [password, setPassword] = useState("a");
   const [message, setMessage] = useState(null);
   const login = async (e) => {
     axios
@@ -13,8 +14,10 @@ function Login({ user, setUser, setView }) {
         password: password,
       })
       .then((response) => {
-        console.log(response);
+        console.log("TU KURWA", response);
+        //document.cookie(`jwt=${response.data.jwt}`);
         setUser(response.data);
+        setView("welcome");
       })
       .catch((error) => {
         setMessage("Wrong login or password");

@@ -22,7 +22,13 @@ function Dashboard({ user, setUser }) {
   }, [categories]);
   let i = 0;
   if (courseToShow !== null) {
-    return <Course courseData={courseToShow} />;
+    return (
+      <Course
+        user={user}
+        courseData={courseToShow}
+        setCourseToShow={setCourseToShow}
+      />
+    );
   }
 
   return (

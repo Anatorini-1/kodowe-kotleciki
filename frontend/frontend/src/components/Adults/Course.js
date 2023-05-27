@@ -2,18 +2,28 @@ import React from "react";
 import { useState } from "react";
 import CourseContent from "./CourseContent";
 import CourseQuiz from "./CourseQuiz";
-function Course({ courseData }) {
+function Course({ courseData, setCourseToShow, user }) {
   const [show, setShow] = useState("content");
 
   return (
     <div>
       {show === "content" ? (
         <>
-          <CourseContent courseData={courseData} />
+          <CourseContent
+            user={user}
+            courseData={courseData}
+            setShow={setShow}
+            setCourseToShow={setCourseToShow}
+          />
         </>
       ) : (
         <>
-          <CourseQuiz courseData={courseData} />
+          <CourseQuiz
+            courseData={courseData}
+            setShow={setShow}
+            setCourseToShow={setCourseToShow}
+            user={user}
+          />
         </>
       )}
       {}

@@ -52,6 +52,22 @@ function Nav({ user, setUser, setView }) {
                   Hi, {user.f_name} {user.l_name}
                 </span>
               </li>
+              {user.access === 0 ? (
+                <>
+                  <li>
+                    <span
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setView("admin");
+                      }}
+                    >
+                      Add Course
+                    </span>
+                  </li>
+                </>
+              ) : (
+                <></>
+              )}
               <a href="#" onClick={logout}>
                 Logout
               </a>

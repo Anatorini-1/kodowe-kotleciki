@@ -5,24 +5,37 @@
     flex-direction: row;
     justify-content: center;
 }
-.accountData{
+
+
+.nameData{
     width: 30%;
 }
 
-.certList{
+.certData{
+    width: 35%;
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
 }
 
-.certInfo{
+.ulCert{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    margin: 10px 0px;
-    padding: 10px;
+}
+
+.ulCert li{
+    margin: 0px;
+    padding-bottom: 10px;
 }
 
 .certDate{
     color: gray;
+}
+
+.certInfo{
+    display: flex;
+    flex-direction: column;
 }

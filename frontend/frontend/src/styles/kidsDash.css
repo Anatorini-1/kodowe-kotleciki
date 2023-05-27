@@ -1,4 +1,32 @@
-.kidsMap{
+.kids-dash{
     height: 800px;
     width: 1600px;
+    display: flex;
+}
+
+.kids-map{
+    position: absolute;
+}
+.dashboarddashboard{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.kids-map img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1600px;
+    height: 800px;
+}
+
+
+.clickable-area{
+    cursor: pointer;
+    position: absolute;
+    z-index: 100;
+    background: transparent;
+    border: none !important;
+    font-size:0;
 }

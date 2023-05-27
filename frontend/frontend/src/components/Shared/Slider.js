@@ -61,10 +61,11 @@ function Slider({ category, setCourseToShow }) {
   }, []);
   useEffect(() => {
     let newSlides = [];
+    let j = 1;
     for (let i = 0; i < slides.length; i++) {
       if (slides[i]["category"] == category) {
         newSlides.push(
-          <div className="slide" id={`slide${i}`} key={i}>
+          <div className="slide" id={`slide${j++}`} key={i}>
             <div className="content">
               <h2>{slides[i]["name"]}</h2>
               <p>{slides[i]["description"]}</p>
