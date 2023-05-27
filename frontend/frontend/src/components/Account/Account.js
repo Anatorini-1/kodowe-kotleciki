@@ -37,6 +37,7 @@ function Account({ user, setUser, setView }) {
         <h1>Your data: </h1>
         <p>First name: {user.f_name}</p>
         <p>Last name: {user.l_name}</p>
+        <p>Score: {user.score}</p>
       </div>
       <div className="accountData certData">
         <h1>Your certifications:</h1>
@@ -44,10 +45,11 @@ function Account({ user, setUser, setView }) {
           {console.log("CHUUUJ", certificates.certificats)}
 
           {certificates.certificats?.map((element) => {
+            console.log(element);
             return (
               <div className="certInfo">
                 <li>
-                  {element.course?.name}
+                  {element.course.name}
                   <br />
                   <span className="certDate">
                     {" "}
@@ -57,7 +59,7 @@ function Account({ user, setUser, setView }) {
                       element.date.slice(12, 19)}
                   </span>
                 </li>
-                <div className="certButtons">Essa</div>
+                <button className="certButton">Download</button>
               </div>
             );
           })}

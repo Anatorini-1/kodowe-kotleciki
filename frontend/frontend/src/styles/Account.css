@@ -29,6 +29,7 @@
 .ulCert li{
     margin: 0px;
     padding-bottom: 10px;
+    padding-right: 70px;
 }
 
 .certDate{
@@ -37,5 +38,9 @@
 
 .certInfo{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+.certButton{
+    height: 50%;
 }

@@ -1,0 +1,41 @@
+.kids-container{
+width: 1600px;
+min-height: 800px;
+margin: 50px auto;
+background-color: black;
+}
+.kids-img{
+    width: 600px;
+    height: 800px;
+    float: left;
+}
+.kids-img img{
+    margin-top:140px;
+    margin-left: 145px;
+}
+.kids-title{
+    margin-top: 60px;
+    width: 1000px;
+    height: 80px;
+    background-color: blue;
+    float: left;
+    color: white;
+    margin-bottom: 100px;
+}
+.kids-item{
+    width: 300px;
+    height: 400px;
+    background-color: aliceblue;
+    float: left;
+    margin: 15px;
+}
+.kids-container button{
+    margin: 50px auto;
+    margin-left: 400px;
+    width: 180px;
+    height: 50px;
+    background-color: #6960e6;
+    border-radius: 10px;
+    color: white;
+    letter-spacing: 2px;
+}

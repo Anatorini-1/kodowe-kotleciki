@@ -27,6 +27,11 @@ function Nav({ user, setUser, setView }) {
       </div>
       <div className="right-options">
         <ul>
+          <li>
+            <a href="#" onClick={(e) => setView("ranking")}>
+              Ranking
+            </a>
+          </li>
           {user === null ? (
             <>
               <li>

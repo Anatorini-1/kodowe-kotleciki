@@ -4,7 +4,7 @@ import axios from "axios";
 import Nav from "./Nav";
 function Login({ user, setUser, setView }) {
   axios.defaults.withCredentials = true;
-  const [userName, setUserName] = useState("e@e.com");
+  const [userName, setUserName] = useState("f@f.com");
   const [password, setPassword] = useState("a");
   const [message, setMessage] = useState(null);
   const login = async (e) => {

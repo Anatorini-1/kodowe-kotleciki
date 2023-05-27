@@ -11,6 +11,7 @@ import Footer from "./components/Shared/Footer";
 import Account from "./components/Account/Account";
 import Course from "./components/Adults/Course";
 import AddCourse from "./components/Admin/AddCourse";
+import Ranking from "./components/Ranking/Ranking";
 function App() {
   const [user, setUser] = useState(null);
   const [toShow, setToShow] = useState(null); // ["welcome","kidsDash","adultsDash","login"
@@ -39,6 +40,9 @@ function App() {
         setToShow(
           <AddCourse user={user} setUser={setUser} setView={setView} />
         );
+        break;
+      case "ranking":
+        setToShow(<Ranking user={user} setUser={setUser} setView={setView} />);
     }
   }, [view]);
   useEffect(() => {

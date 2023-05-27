@@ -7,6 +7,7 @@ function AddCourse({ user }) {
   const [content, setContent] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
+  const [score, setScore] = useState(0);
 
   return (
     <div className="add-form">
@@ -36,6 +37,14 @@ function AddCourse({ user }) {
           setCategory(e.target.value);
         }}
       />{" "}
+      <input
+        placeholder="Score"
+        type="text"
+        defaultValue={category}
+        onChange={(e) => {
+          setScore(parseInt(e.target.value));
+        }}
+      />{" "}
       <br />
       <textarea
         type="text"
@@ -60,6 +69,7 @@ function AddCourse({ user }) {
               description: description,
               category: category,
               jwt: user.jwt,
+              score: score,
               content: {
                 content: content,
                 title: "title",

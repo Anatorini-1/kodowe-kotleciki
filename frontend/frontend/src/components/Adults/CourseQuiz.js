@@ -85,6 +85,10 @@ function CourseQuiz({ courseData, setShow, setCourseToShow, user }) {
           onClick={() => {
             if (user == null) return;
             let result = score.reduce((a, b) => a + b) / courseData.quiz.length;
+            if (result < 0.5) {
+              alert("Nie zdałeś");
+              return;
+            }
             axios({
               url: "http://192.168.134.36:8000/api/addfinishedcourse",
               method: "POST",
@@ -95,6 +99,19 @@ function CourseQuiz({ courseData, setShow, setCourseToShow, user }) {
               },
             })
               .then((response) => {
+                axios({
+                  url: "http://192.168.134.36:8000/api/updateUser",
+                  method: "POST",
+                  withCredentials: true,
+                  data: {
+                    score: user.score + courseData.score,
+                    jwt: user.jwt,
+                  },
+                })
+                  .then((response) => {})
+                  .catch((error) => {
+                    console.log(error);
+                  });
                 alert("Dzięki");
               })
               .catch((error) => {
