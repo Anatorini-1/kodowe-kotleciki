@@ -1,7 +1,7 @@
 import React from "react";
 import Nav from "./Shared/Nav";
-import BGImage from "../img/12.jpg";
-import AdultIMG from "../img/13.jpg";
+import BGImage from "../img/12.png";
+import AdultIMG from "../img/13.png";
 import "../styles/Welcome.css";
 function Welcome({ setView }) {
   console.log(BGImage);

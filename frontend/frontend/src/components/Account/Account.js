@@ -37,6 +37,8 @@ function Account({ user, setUser, setView }) {
         <h1>Your data: </h1>
         <p>First name: {user.f_name}</p>
         <p>Last name: {user.l_name}</p>
+        <p>Age: {user.age} </p>
+        <p>E-mail: {user.email}</p>
         <p>Score: {user.score}</p>
       </div>
       <div className="accountData certData">

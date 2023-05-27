@@ -1,43 +1,46 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "../../styles/Slider.css";
-import { useEffect, useState } from "react";
+
 function Slider({ category, setCourseToShow }) {
   const [slides, setSlides] = useState([]);
   const [slidesToRender, setSlidesToRender] = useState([]);
-  useEffect(() => {
-    const slidesContainer = document.querySelector(".slides-container");
-    const slides = document.querySelectorAll(".slide");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    let slideIndex = 0;
-    let numVisibleSlides;
+  const slidesContainerRef = useRef(null);
+  const slideIndexRef = useRef(0);
+  const numVisibleSlidesRef = useRef(0);
 
+  useEffect(() => {
     function calculateVisibleSlides() {
       const screenWidth = window.innerWidth;
       if (screenWidth >= 1199) {
-        numVisibleSlides = 3;
+        numVisibleSlidesRef.current = 3;
       } else if (screenWidth >= 760) {
-        numVisibleSlides = 2;
+        numVisibleSlidesRef.current = 2;
       } else {
-        numVisibleSlides = 1;
+        numVisibleSlidesRef.current = 1;
       }
     }
 
     function showSlides() {
-      slidesContainer.style.transform = `translateX(-${
-        slideIndex * (100 / numVisibleSlides)
+      slidesContainerRef.current.style.transform = `translateX(-${
+        slideIndexRef.current * (100 / numVisibleSlidesRef.current)
       }%)`;
     }
 
     function showPreviousSlide() {
-      slideIndex = Math.max(slideIndex - 1, 0);
+      slideIndexRef.current = Math.max(slideIndexRef.current - 1, 0);
       showSlides();
     }
 
     function showNextSlide() {
-      slideIndex = Math.min(slideIndex + 1, slides.length - numVisibleSlides);
+      slideIndexRef.current = Math.min(
+        slideIndexRef.current + 1,
+        slides.length - numVisibleSlidesRef.current
+      );
       showSlides();
     }
+
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
     prevBtn.addEventListener("click", showPreviousSlide);
     nextBtn.addEventListener("click", showNextSlide);
@@ -49,7 +52,13 @@ function Slider({ category, setCourseToShow }) {
       calculateVisibleSlides();
       showSlides();
     });
-  }, []);
+
+    return () => {
+      prevBtn.removeEventListener("click", showPreviousSlide);
+      nextBtn.removeEventListener("click", showNextSlide);
+      window.removeEventListener("resize", calculateVisibleSlides);
+    };
+  }, [slides]);
 
   useEffect(() => {
     fetch("http://192.168.134.36:8000/api/courses")
@@ -59,32 +68,29 @@ function Slider({ category, setCourseToShow }) {
         setSlides(data);
       });
   }, []);
+
   useEffect(() => {
-    let newSlides = [];
-    let j = 1;
-    for (let i = 0; i < slides.length; i++) {
-      if (slides[i]["category"] == category) {
-        newSlides.push(
-          <div className="slide" id={`slide${j++}`} key={i}>
-            <div className="content">
-              <h2>{slides[i]["name"]}</h2>
-              <p>{slides[i]["description"]}</p>
-            </div>
-            <button
-              className="choose"
-              onClick={(e) => {
-                setCourseToShow(slides[i]);
-              }}
-            >
-              Choose
-            </button>
+    const newSlides = slides
+      .filter((slide) => slide.category === category)
+      .map((slide, index) => (
+        <div className="slide" id={`slide${index + 1}`} key={index}>
+          <div className="content">
+            <h2>{slide.name}</h2>
+            <p>{slide.description}</p>
           </div>
-        );
-      }
-    }
-    console.log(newSlides.length);
+          <button
+            className="choose"
+            onClick={(e) => {
+              setCourseToShow(slide);
+            }}
+          >
+            Choose
+          </button>
+        </div>
+      ));
+
     setSlidesToRender(newSlides);
-  }, [slides, category]);
+  }, [slides, category, setCourseToShow]);
 
   return (
     <>
@@ -94,14 +100,15 @@ function Slider({ category, setCourseToShow }) {
         </div>
 
         <div className="slider">
-          <div className="slides-container">{slidesToRender}</div>
+          <div className="slides-container" ref={slidesContainerRef}>
+            {slidesToRender}
+          </div>
         </div>
 
         <div className="right-arrow">
           <button id="nextBtn">&#8594;</button>
         </div>
       </div>
-      <script src="slider.js"></script>
     </>
   );
 }
